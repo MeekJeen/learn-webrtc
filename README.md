@@ -123,5 +123,27 @@ if not available_versions:
 set vs2017_install=D:\Program Files (x86)\Microsoft Visual Studio\2017
 ```
 
+## build_for_win.bat编译m74报错
+错误信息如下：
+```
+FAILED: obj/media/rtc_constants.lib 
+D:/mygitcode/learn-webrtc/depot_tools/bootstrap-3_8_0_chromium_8_bin/python/bin/python.exe ../../webrtc/src/build/toolchain/win/tool_wrapper.py link-wrapper environment.x86 False lib.exe /nologo /ignore:4221 /OUT:obj/media/rtc_constants.lib @obj/media/rtc_constants.lib.rsp
+Traceback (most recent call last):
+  File "../../webrtc/src/build/toolchain/win/tool_wrapper.py", line 29, in <module>
+    import win32file    # pylint: disable=import-error
+ImportError: No module named win32file
+```
+解决方案是需要手动安装win32file（我这里使用的是depot_tools的python，所以要在depot_tools的python上安装win32file）
+
+从报错信息中找到python路径如下：
+```
+D:/mygitcode/learn-webrtc/depot_tools/bootstrap-3_8_0_chromium_8_bin/python/bin/python.exe
+```
+所以解决方案如下：
+```
+D:/mygitcode/learn-webrtc/depot_tools/bootstrap-3_8_0_chromium_8_bin/python/bin/python.exe -m pip install pywin32
+```
+重新build_for_win.bat编辑就好了
+
 
 

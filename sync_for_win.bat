@@ -29,6 +29,8 @@ set PATH=%depot_tools_path%;%PATH%
 set GYP_GENERATORS=ninja
 set GYP_MSVS_VERSION=2017
 set DEPOT_TOOLS_WIN_TOOLCHAIN=0
+call python --version
+exit 1
 
 :: 查找vcvarsall.bat路径
 for /f "tokens=* delims=" %%o in ('call python script/find_vcvarsall_path.py') do (
@@ -100,8 +102,8 @@ if not %ERRORLEVEL% == 0 (
 
 cd %webrtc_src_path%
 :: webrtc最新release https://chromiumdash.appspot.com/branches
-:: 使用release m76学习
-call git checkout -b branch-heads/m76 refs/remotes/branch-heads/m76
+:: 使用release m74学习
+call git checkout -b branch-heads/m74 refs/remotes/branch-heads/m74
 
 :: 切换分支以后必须sync，来同步不同分支的build tools
 :: 不能再加--nohooks，否则不会下载webrtc\src\buildtools\win\gn.exe等编译工具

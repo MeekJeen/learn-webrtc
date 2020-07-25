@@ -40,7 +40,7 @@ if /i %debug_mode% == "true" (
 
 :: 环境变量设置
 set depot_tools_path=%script_path%depot_tools
-set PATH=%depot_tools_path%;%PATH%
+set PATH=%PATH%;%depot_tools_path%
 
 set GYP_GENERATORS=ninja
 set GYP_MSVS_VERSION=2017
